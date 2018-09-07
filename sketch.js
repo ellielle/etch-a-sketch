@@ -1,25 +1,54 @@
 const container = document.querySelector(".container");
+const backgroundColor = document.body.style.backgroundColor;
+const slider = document.querySelector(".slider");
 
-for (let i = 0; i < 16; i++) {
-    for (let x = 0; x < 16; x++) {
+window.onload = drawGrid(16);
+
+function drawGrid(size) {
+    for (let i = 0; i < size * size; i++) {
         const div = document.createElement("div");
-        div.textContent = "test";
-        div.setAttribute("class", "grid");
-        div.style.backgroundColor = "rgb(255, 255, 255)";
-        div.addEventListener("mouseover", (e) =>
-            changeColor(e)
+        container.appendChild(div).classList.add("grid");
+
+        const gridItems = document.querySelectorAll(".grid")[i];
+        gridItems.style.height = (600 / size) + "px";
+        gridItems.style.width = (600 / size) + "px";
+
+        div.addEventListener("click", (e) =>
+            changeColorClick(e)
         );
-        container.appendChild(div);
+        div.addEventListener("mousemove", (e) =>
+            changeColorDraw(e)
+        );
     }
 }
 
-function changeColor(e) {
-    // rgb(255, 255, 255)  - 51
-    e.target.style.backgroundColor = "black";
-    //let color = e.target.style.backgroundColor.toString().split(/[1-9]/g,);
-    console.log(e);
+function changeColorClick(e) {
+    e.target.style.background = "black";
+}
+function changeColorDraw(e) {
+    
+    if (e.buttons == 1) {
+        e.target.style.background = "black";
+    }
+    else if (e.buttons == 2) {
+        e.target.style.background = backgroundColor;
+    }
 }
 
-function setNewGridSize(num) {
-    
+
+function resetGrid() {
+    let resetGrid = document.querySelectorAll(".grid");
+    for (let i = 0; i < resetGrid.length; i++) {
+        resetGrid[i].style.background = backgroundColor;
+    }
+}
+
+function changeGridSize() {
+    slider.classList.remove("hide");
+    let removeGrid = document.querySelectorAll(".grid");    
+    for (let i = 0; i < removeGrid.length; i++) {
+        removeGrid[i].parentNode.removeChild(removeGrid[i]);
+    }
+
+    drawGrid(newSize);
 }

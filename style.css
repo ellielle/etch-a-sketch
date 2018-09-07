@@ -1,13 +1,44 @@
-.container {
-    max-height: 700px;
-    max-width: 700px;
+body, html {
+    height: 100%;
+    background-color: #789bd3;
+}
+
+h1 {
     display: flex;
-    flex-wrap: wrap;
-    margin: auto;
+    font-size: 6vmin;
+    margin: 0;
+    justify-content: center;
+}
+
+.container {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
 }
 .grid {
+    float: left;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.buttons {
     display: flex;
-    position: relative;
-    height: 43.75px;
-    width: 43.75px;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+}
+.btn {
+    margin: 0 10px 0 0;
+}
+.slider {
+    display: flex;
+    justify-content: center;
+    margin: 10px;    
+}
+.hide {
+    visibility: hidden;
 }
