@@ -10,11 +10,10 @@
     <h1>Etch-A-Sketch</h1>
     
     <div class="buttons">
+        <button class="btn" onclick="changeGridSize()">Change Size</button>
         <button class="btn" onclick="resetGrid()">RESET</button>
-        <button class="btn" onclick="changeGridSize()">CHANGE SIZE</button>
-    </div>
-    <div class="slider hide">
-        <input type="range" min="2" max="64" value="16">
+        <input type="color" onclick="setDrawColor()" id="colorPicker" name="color">
+        <button onclick="setRGB()" class="rainbow-button" id="RGB">RGB</button>
     </div>
     <div class="container"></div>
 
